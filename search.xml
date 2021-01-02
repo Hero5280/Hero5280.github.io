@@ -22,4 +22,32 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>创新实践周报1</title>
+    <url>/2021/01/02/%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A51/</url>
+    <content><![CDATA[<p>小白入门QAQ</p>
+<a id="more"></a>
+<h1 id="创新实践周报"><a href="#创新实践周报" class="headerlink" title="创新实践周报"></a>创新实践周报</h1><p>[TOC]</p>
+<img src="C:\Users\86178\Pictures\Saved Pictures\壁纸ilil\wallhaven-3zkow9.jpg" style="zoom:33%;" />
+
+<h2 id="本周工作计划"><a href="#本周工作计划" class="headerlink" title="本周工作计划"></a>本周工作计划</h2><h3 id="1-对爬取疫情数据并进行可视化的作业进行总结，以及对工具进行更加系统的学习。"><a href="#1-对爬取疫情数据并进行可视化的作业进行总结，以及对工具进行更加系统的学习。" class="headerlink" title="1.   对爬取疫情数据并进行可视化的作业进行总结，以及对工具进行更加系统的学习。"></a>1.   对爬取疫情数据并进行可视化的作业进行总结，以及对工具进行更加系统的学习。</h3><h3 id="2-完成小组安排的项目选择任务"><a href="#2-完成小组安排的项目选择任务" class="headerlink" title="2.   完成小组安排的项目选择任务"></a>2.   完成小组安排的项目选择任务</h3><h2 id="完成内容"><a href="#完成内容" class="headerlink" title="完成内容"></a>完成内容</h2><p>​        <strong>1.</strong></p>
+<ul>
+<li>​        \1.   通过比较爬虫三大库Requests库，<em>Beautifulsoup</em>库，以及<em>lxml</em>库，虽然获得请求头的方法有些不同外,Requests库还有get()方法        以及post()方法，后者勇于提交表单来爬取需要登录才能获得数据的网站，Requests库请求不会一帆风顺，可能会出现错误为四种：<em>ConnectionError</em>异常（网络问题）、<em>HTTPEeeor</em>异常（返回了状态不成功的代码，404错误）、<em>Timeout</em>异常（请求超时）、TooManyRedirects异常（请求次数超过了限定的次数）；<em>Beautifulsoup</em>库除了python标准库中的HTML解析器外还支持一些第三方的解析器拥有<em>find</em>()、<em>find_all</em>()、<em>selector</em>()方法；<em>Lxml</em>库的解析速度比<em>Beautifulsoup</em>快。        </li>
+</ul>
+<p>​     <strong>2.</strong></p>
+<ul>
+<li>​          \1.   Re模板拥有所有的正则表达式常用的有三个函数*search()<em>函数用来匹配第一个符合规律的内容，返回一个正则表达式对象、</em>sub()<em>函数用于替换字符串中的匹配项、</em>findall()*函数匹配所有符合规律的内容，并以列表的形式返回。</li>
+</ul>
+<p>​      <strong>3.</strong></p>
+<ul>
+<li>​         \1.   数据可视化本周简单学习了几个库有<em>datatime</em>库：date即日期，类的构成为 （年, 月，日），对应的 <em>year、month、day</em>均为<em>date</em>类的属性（type为int）。一些主要的方法有：today()返回当日信息；weekday()返回当前是星期几，（周一为0）从0开始计数；<em>isoweekday()</em> 返回当前是星期几，（周一为1）从1开始计数：<em>isoformat()*返回日期以ISO格式，即 *’YYYY-MM-DD’</em>的字符串；<em>strftime</em>(…)方法可自定义日期表示法（<em>time</em>和<em>datetime</em>也均可使用）；<em>date.replace(year/month/day)</em> 生成一个新的日期对象，用参数指定的年，月，日代替原有对象中的属性。（原有对象仍保持不变）。<em>Pyecharts</em>库：此库打算以后仔细学习，内容过大。</li>
+</ul>
+<h2 id="下周计划"><a href="#下周计划" class="headerlink" title="下周计划"></a>下周计划</h2><p>学习js、vue.js</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>blog</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
 </search>
