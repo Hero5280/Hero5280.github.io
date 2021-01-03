@@ -24,19 +24,30 @@
     var CONFIG = {"hostname":"hero.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="todo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://hero.github.io/about/index.html">
+  <meta name="description" content="创新实践周报6\1.   学习了Java的大部分类，以及接口，集合，泛型，异常处理等等。 \2.   观看学习视频，这个up主是用虚拟机lunix环境下进行操作的，考虑到完整性（因为和这个视频的项目是比较完整的，可以看做参考）于是，就搭建了同样的环境 \3.   前端的学习也在看： DOM导航 1     DOM 处理中的一种常见错误是认为元素节点中包含文本。 访问 innerHTML 属性等同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A56/index.html">
 <meta property="og:site_name" content="H-I-C">
-<meta property="og:description" content="todo">
+<meta property="og:description" content="创新实践周报6\1.   学习了Java的大部分类，以及接口，集合，泛型，异常处理等等。 \2.   观看学习视频，这个up主是用虚拟机lunix环境下进行操作的，考虑到完整性（因为和这个视频的项目是比较完整的，可以看做参考）于是，就搭建了同样的环境 \3.   前端的学习也在看： DOM导航 1     DOM 处理中的一种常见错误是认为元素节点中包含文本。 访问 innerHTML 属性等同">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-02T03:19:16.000Z">
-<meta property="article:modified_time" content="2021-01-02T03:19:42.882Z">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg">
+<meta property="article:published_time" content="2021-01-03T05:16:00.000Z">
+<meta property="article:modified_time" content="2021-01-03T05:17:48.736Z">
 <meta property="article:author" content="c">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="事件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg">
 
-<link rel="canonical" href="http://hero.github.io/about/">
+<link rel="canonical" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A56/">
 
 
 <script id="page-configurations">
@@ -44,13 +55,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>about | H-I-C
-</title>
+  <title>DOM | H-I-C</title>
   
 
 
@@ -183,44 +193,130 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A56/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DOM
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">about
-</h1>
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:17:48" itemprop="dateModified" datetime="2021-01-03T13:17:48+08:00">2021-01-03</time>
+              </span>
 
-<div class="post-meta">
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>716</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<h1 id="创新实践周报6"><a href="#创新实践周报6" class="headerlink" title="创新实践周报6"></a>创新实践周报6</h1><p>\1.   学习了Java的大部分类，以及接口，集合，泛型，异常处理等等。</p>
+<p>\2.   观看学习视频，这个up主是用虚拟机lunix环境下进行操作的，考虑到完整性（因为和这个视频的项目是比较完整的，可以看做参考）于是，就搭建了同样的环境</p>
+<p>\3.   前端的学习也在看：</p>
+<p><strong>DOM</strong>导航</p>
+<p><strong>1</strong>     DOM 处理中的一种常见错误是认为元素节点中包含文本。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p>访问 innerHTML 属性等同于访问首个子节点的 nodeValue</p>
+<p><strong>注释：</strong>nodeName 总是包含 HTML 元素的大写标签名。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p>4     <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p>5   <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<p><strong>6</strong>     <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg" alt="img">如需删除某个 HTML 元素，您需要知晓该元素的父：</p>
+<p>8     替换元素：<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg" alt="img"></p>
+<p><strong>DOM</strong>集合</p>
+<p><strong>1</strong>     <strong>getElementTagName</strong>（）返回 html<strong>的Collection</strong>对象，<strong>HTMLCollection</strong> 对象是类数组的 HTML 元素列表（集合）。</p>
+<p><strong>var x = document. getElementTagName(“p”)**</strong>选取所有<p><strong><strong>元素，通过索引访问x</strong></strong>中的对象：x[0]**</p>
+<p>2   length 属性定义了 HTMLCollection 中元素的数量</p>
+<p><strong>3</strong>   <strong>HTMLCollection</strong> <strong>并非数组！</strong></p>
+<p><strong>DOM</strong>节点列表</p>
+<p><strong>1</strong>     <strong><em>NodeList</em></strong> 对象是从文档中提取的节点列表（集合）。NodeList 对象与 HTMLCollection 对象几乎相同。</p>
+<p><strong>2</strong>     如使用 getElementsByClassName() 方法，某些（老的）浏览器会返回 NodeList 对象而不是 HTMLCollection。</p>
+<p><strong>3</strong>     所有浏览器都会为 childNodes 属性返回 NodeList 对象。</p>
+<p><strong>4</strong>     大多数浏览器会为 querySelectorAll() 方法返回 NodeList 对象。</p>
+<p>另外根据小组项目查阅了相关资料，再加上老师给的关于新苗的一些参看资料，小组进行了相关讨论，并深入了解项目</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
+              <a href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 事件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A55/" rel="prev" title="JSDOM">
+      <i class="fa fa-chevron-left"></i> JSDOM
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A58/" rel="next" title="使用IDEA搭建后台项目">
+      使用IDEA搭建后台项目 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>todo</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -271,6 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A56"><span class="nav-number">1.</span> <span class="nav-text">创新实践周报6</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

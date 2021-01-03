@@ -24,19 +24,21 @@
     var CONFIG = {"hostname":"hero.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="todo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://hero.github.io/about/index.html">
+  <meta name="description" content="创新实践周报4$$本周工作计划     机械学习线性代数基础完成第二章    进一步学习js以及vue.js    进一步学习正则表达式以及爬虫知识    JS的表单对象和函数$$   [TOC] 正则表达式1      一般字符： “.”，匹配任意的单个字符；“\”转义字符；“[…]”字符集，对应字符集的任意字符。 2      预定义字符集：\d匹配一个数字字符\D匹配一个非零数字字符\s匹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式与爬虫">
+<meta property="og:url" content="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A54/index.html">
 <meta property="og:site_name" content="H-I-C">
-<meta property="og:description" content="todo">
+<meta property="og:description" content="创新实践周报4$$本周工作计划     机械学习线性代数基础完成第二章    进一步学习js以及vue.js    进一步学习正则表达式以及爬虫知识    JS的表单对象和函数$$   [TOC] 正则表达式1      一般字符： “.”，匹配任意的单个字符；“\”转义字符；“[…]”字符集，对应字符集的任意字符。 2      预定义字符集：\d匹配一个数字字符\D匹配一个非零数字字符\s匹">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-02T03:19:16.000Z">
-<meta property="article:modified_time" content="2021-01-02T03:19:42.882Z">
+<meta property="article:published_time" content="2021-01-03T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-03T05:33:09.597Z">
 <meta property="article:author" content="c">
+<meta property="article:tag" content="正则表达式">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://hero.github.io/about/">
+<link rel="canonical" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A54/">
 
 
 <script id="page-configurations">
@@ -44,13 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>about | H-I-C
-</title>
+  <title>正则表达式与爬虫 | H-I-C</title>
   
 
 
@@ -183,44 +184,172 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          正则表达式与爬虫
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">about
-</h1>
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:33:09" itemprop="dateModified" datetime="2021-01-03T13:33:09+08:00">2021-01-03</time>
+              </span>
 
-<div class="post-meta">
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<h1 id="创新实践周报4"><a href="#创新实践周报4" class="headerlink" title="创新实践周报4"></a>创新实践周报4</h1><p>$$<br>本周工作计划</p>
+<ol>
+<li>   机械学习线性代数基础完成第二章</li>
+<li>   进一步学习js以及vue.js</li>
+<li>   进一步学习正则表达式以及爬虫知识</li>
+<li>   JS的表单对象和函数<br>$$</li>
+</ol>
+<hr>
+<p>[TOC]</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>1      一般字符： <strong>“.”</strong>，匹配任意的单个字符；<strong>“\”</strong>转义字符；<strong>“[…]”</strong>字符集，对应字符集的任意字符。</p>
+<p>2      预定义字符集：<strong>\d</strong>匹配一个数字字符\D匹配一个非零数字字符<strong>\s</strong>匹配任何空白字（空格 换行符 制表符换页符等）<strong>\S</strong>匹配任何非空字符<strong>\w</strong>匹配包括下划线的任意单词字符\W匹 配任何非单词字符。</p>
+<p>3      数量词：*<strong>**匹配前一个0或无限次+匹配前一个1或无限次</strong>？<strong>匹配前一个0或1次</strong>{m}<strong>匹配前一个m次</strong>{m,n}**匹配前一个m-n次</p>
+<p>4      边界匹配：<strong>＾</strong>匹配字符串的开头（＾abc匹配abc开头的字符串）**$<strong>匹配字符串结尾</strong>\A<strong>仅匹配字符串开头</strong>\Z**仅匹配字符串结尾</p>
+<p>5      非贪心算法：*<em>（.<em>？）</em></em>匹配任意字符，</p>
+<p>6      <strong>search()**函数：匹配并提取符合规律的内容返回的是正则表达式对象</strong>re.search(pattern,string,flage),**分别为要匹配的正则表达式，匹配的字符串，以及标志（是否换行，是否区分大小写等）</p>
+<p>7      <strong>sub()**函数用于替换字符串中的匹配项。</strong>re.sub(pattern,repl,string,count = 0,flage)repl<strong>是要替换的字符串，</strong>count**是模式匹配后替换的最大次数默认0表示替换所有的匹配。</p>
+<p>8      <strong>findall</strong>函数匹配所有符合规律的内容并且以列表的形式返回结果。</p>
+<p>9      <strong>re</strong>的模块修饰符：<strong>I</strong>使匹配对大小写不敏感，<strong>L</strong>做本地化识别<strong>M</strong>多行匹配影响**$<strong>和</strong>＾S<strong>匹配包括换行符在内的所有字符U根据Unicode解析字符</strong>X**该标志通过给予更加灵活的方式以便于将正则表达式更易理解</p>
+<p>10     **strip()**方法去除换行符</p>
+<p>11     在爬取斗破小说的时候用到了构造多页URL的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Urls &#x3D; [‘http.html’.format (str (i)) for i in range(n,m)]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Xpath以及xlml库"><a href="#Xpath以及xlml库" class="headerlink" title="Xpath以及xlml库"></a>Xpath以及xlml库</h2><p>1     Xpath节点选择：</p>
+<ul>
+<li><p>Nodename—选取此节点的所有子节点</p>
+</li>
+<li><p>/从根节点选取</p>
+</li>
+<li><p>//从匹配选择的当前节点选择文档中的节点，不考虑它的位置</p>
+</li>
+<li><p>.选取当前节点</p>
+</li>
+<li><p>..选取当前节点的父节点</p>
+</li>
+<li><p>@选取属性</p>
+</li>
+<li><p><strong>etree.HTML（）</strong>把<strong>html</strong>文本转化为<strong>HTML</strong>对象，要打印<strong>html</strong>内容，使用<strong>etree.tostring（）</strong></p>
+</li>
+<li><p>有时候遇到相同字符开头的标签，通过<strong>start-with()</strong>;遇到表嵌套标签的情况通过<strong>string(.)</strong><br>$$<br>这里本来是几张图的但是由于能力有限暂时不能显示，阿巴阿巴。。。<br>$$</p>
+</li>
+</ul>
+<h2 id="vue-js"><a href="#vue-js" class="headerlink" title="vue.js"></a>vue.js</h2><ol>
+<li><p>使用<strong>v-clock</strong>指令可以解决插值表达式的闪烁问题，添加属性<strong>v-clcok</strong>然后在<strong>head</strong>中创建一个样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style：[v-clock] : &#123;display : none;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>可以在标题标签中添加<strong>v-text</strong>属性，默认<strong>v-text</strong>属性没有闪烁问题，但是会覆盖元素中原本的内容，插值表达式只会替换自己的占位符不会把整个元素内容清空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p v-cloak&gt; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#123; &#123; mes &#125; &#125;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;h4 v-text&#x3D; &quot;mes &quot;&gt;-&#x3D;-&#x3D;-&#x3D;--&#x3D;-&lt;&#x2F;h4&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p><strong>v-html = “mes”</strong> 使得<strong>mes</strong>以<strong>mes</strong>当成<strong>html</strong>输出，也会覆盖元素内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;&#123; mes2 &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div v-html&#x3D;&quot;mes2&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 正则表达式</a>
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A53/" rel="prev" title="周报、JS">
+      <i class="fa fa-chevron-left"></i> 周报、JS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A55/" rel="next" title="JSDOM">
+      JSDOM <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>todo</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -271,6 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A54"><span class="nav-number">1.</span> <span class="nav-text">创新实践周报4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xpath%E4%BB%A5%E5%8F%8Axlml%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">Xpath以及xlml库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-js"><span class="nav-number">1.3.</span> <span class="nav-text">vue.js</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

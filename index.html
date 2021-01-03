@@ -187,6 +187,899 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A57/" class="post-title-link" itemprop="url">docker、mysql</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:19:51" itemprop="dateModified" datetime="2021-01-03T13:19:51+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践周报7"><a href="#创新实践周报7" class="headerlink" title="创新实践周报7"></a>创新实践周报7</h1><p>1.使用虚拟机下载docker，熟悉关键的docker基本指令。</p>
+<p>​    docker run -d 后台运行容器并返回容器id</p>
+<p>   docker run –name=”***”      为容器给了一个新名字</p>
+<p>   docker start/stop id/name   运行或停止一个容器</p>
+<p>   docker rm name        删除容器</p>
+<p>   docker exec -t name /bin/bash      进入容器</p>
+<p>   docker ps      显示运行中的容器状态</p>
+<p>   pocker ps -a      显示全部的容器状态</p>
+<p>   docker images      显示本地镜像</p>
+<p>   docker pull 镜像名称 tag  下载镜像</p>
+<p>   mysql -uroot -p 加密码    进入到mysql</p>
+<p>   pwd            进入mysql界面</p>
+<p>   rm -rf 非空目录名     删除目录</p>
+<p>   mkdir 名字        创建文件</p>
+<p>   docker-compose安装时的chmod +x       更改权限成可执行模式</p>
+<p>2.创建mysql容器</p>
+<p>   使用docker-compose创建</p>
+<p>   1.创建相关目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir db</span><br><span class="line"></span><br><span class="line">mkdir conf</span><br><span class="line"></span><br><span class="line">mkdir log</span><br></pre></td></tr></table></figure>
+<p>2.配置<strong>docker-compose.yml**</strong>文件**</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;***&#39;</span><br><span class="line">services:</span><br><span class="line">    mysql:</span><br><span class="line">        container_name: &quot;*****&quot;</span><br><span class="line">        network_mode: &quot;host&quot;</span><br><span class="line">        environment:</span><br><span class="line">            MYSQL_ROOT_PASSWORD: &quot;*****&quot;</span><br><span class="line">            MYSQL_USER: &#39;root&#39;</span><br><span class="line">            MYSQL_PASS: &#39;*****&#39;</span><br><span class="line">        image: &quot;mysql:tag&quot;</span><br><span class="line">        restart: always</span><br><span class="line">        ports:</span><br><span class="line">            - 3306:3306</span><br><span class="line">        volumes:</span><br><span class="line">            - &quot;&#x2F;home&#x2F;aosp&#x2F;docker&#x2F;mysql&#x2F;db:&#x2F;var&#x2F;lib&#x2F;mysql&quot;</span><br><span class="line">            - &quot;&#x2F;home&#x2F;aosp&#x2F;docker&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&quot;</span><br><span class="line">            - &quot;&#x2F;home&#x2F;aosp&#x2F;docker&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>3.创建容器</p>
+<p><strong>docker-compose up -d</strong></p>
+<p>\3. 创建数据库和数据表</p>
+<p>1.先创建数据库</p>
+<p><strong>mysql&gt; create database if not exists sob_blog character set utf8;</strong></p>
+<p><strong>Query OK, 1 row affected (0.00 sec)</strong></p>
+<p>2.切换数据库</p>
+<p>mysql&gt; use sob_blog;</p>
+<p>Database changed</p>
+<p>\3. 创建数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb_user(</span><br><span class="line">    id VARCHAR(32) NOT NULL   COMMENT &#39;ID&#39; ,</span><br><span class="line">    user_name VARCHAR(32) NOT NULL   COMMENT &#39;用户名&#39; ,</span><br><span class="line">    password VARCHAR(128) NOT NULL   COMMENT &#39;密码&#39; ,</span><br><span class="line">    avatar VARCHAR(32) COMMENT &#39;头像&#39; ,</span><br><span class="line">    email VARCHAR(128) NOT NULL   COMMENT &#39;邮箱&#39; ,</span><br><span class="line">    sign VARCHAR(1024) COMMENT &#39;签名&#39; ,</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) COMMENT &#x3D; &#39;tb_user &#39;;;</span><br></pre></td></tr></table></figure>
+<p>\4. 创建分类表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb_category(</span><br><span class="line">    id VARCHAR(32) NOT NULL   COMMENT &#39;ID&#39; ,</span><br><span class="line">    category_name VARCHAR(32) NOT NULL   COMMENT &#39;分类名称&#39; ,</span><br><span class="line">    category_py VARCHAR(32) NOT NULL   COMMENT &#39;分类拼音&#39; ,</span><br><span class="line">    description VARCHAR(1024) NOT NULL   COMMENT &#39;描述说明&#39; ,</span><br><span class="line">    &#96;order&#96; INT NOT NULL  DEFAULT 0 COMMENT &#39;顺序&#39; ,</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) COMMENT &#x3D; &#39;tb_category &#39;;</span><br></pre></td></tr></table></figure>
+<p>\5. 创建文章表*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb_article(</span><br><span class="line">    id VARCHAR(32) NOT NULL   COMMENT &#39;ID&#39; ,</span><br><span class="line">    user_id VARCHAR(32) NOT NULL   COMMENT &#39;用户ID&#39; ,</span><br><span class="line">    category_id VARCHAR(32)    COMMENT &#39;分类ID&#39; ,</span><br><span class="line">    content VARCHAR(32)    COMMENT &#39;内容&#39; ,</span><br><span class="line">    type INT    COMMENT &#39;类型 0表示富文本，1表示markdown&#39; ,</span><br><span class="line">    status INT NOT NULL   COMMENT &#39;状态 0表示已经发布，1表示草稿</span><br><span class="line">    2表示等待发布&#39; ,</span><br><span class="line">    view_count INT   DEFAULT 0 COMMENT &#39;浏览量&#39; ,</span><br><span class="line">    publish_time DATETIME    COMMENT &#39;发布时间&#39; ,</span><br><span class="line">    update_time DATETIME    COMMENT &#39;更新时间&#39; ,</span><br><span class="line">    PRIMARY KEY (id),</span><br><span class="line">    FOREIGN KEY(user_id) REFERENCES tb_user(id),</span><br><span class="line">    FOREIGN KEY(category_id) REFERENCES tb_category(id)</span><br><span class="line">) COMMENT &#x3D; &#39;tb_article &#39;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>\5. 创建轮播图表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb_looper(</span><br><span class="line">    id VARCHAR(32) NOT NULL   COMMENT &#39;ID&#39; ,</span><br><span class="line">    url VARCHAR(1024)    COMMENT &#39;轮播图的Url&#39; ,</span><br><span class="line">    path VARCHAR(1024)    COMMENT &#39;图片路径&#39; ,</span><br><span class="line">    title VARCHAR(128)    COMMENT &#39;标题&#39; ,</span><br><span class="line">    &#96;order&#96; INT    COMMENT &#39;顺序&#39; ,</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) COMMENT &#x3D; &#39;tb_looper &#39;;</span><br></pre></td></tr></table></figure>
+<p>\6. 创建文章每日访问量表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb_kpi_daily(</span><br><span class="line">    id VARCHAR(32) NOT NULL   COMMENT &#39;ID&#39; ,</span><br><span class="line">    view_count INT NOT NULL  DEFAULT 0 COMMENT &#39;浏览量&#39; ,</span><br><span class="line">    update_time DATETIME NOT NULL   COMMENT &#39;更新时间&#39; ,</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) COMMENT &#x3D; &#39;tb_kpi_daily 每天访问量统计表&#39;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A58/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A58/" class="post-title-link" itemprop="url">使用IDEA搭建后台项目</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:22:02" itemprop="dateModified" datetime="2021-01-03T13:22:02+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践8"><a href="#创新实践8" class="headerlink" title="创新实践8"></a>创新实践8</h1><p>1.后台服务程序，也就是这部分程序，这是最基本的，也是最重要的。使用javaWeb实现。</p>
+<p> \1. 选择create New project</p>
+<p> \2. 选择maven,如果你熟悉或者有自己经常使用的模板可以选择。</p>
+<p> \3. 选择项目路径，finish</p>
+<p> 4.创建包和Application类: Application要放在外层，否则无法扫描子包里的东西。也就是它要在其他包的外层。这样子才可以扫描到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package net.sunofbeaches;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">@SpringBootApplication</span><br><span class="line"></span><br><span class="line">public class BlogApplication &#123;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    SpringApplication.run(BlogApplication.class, args);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p> \5. 配置内容包含很多，数据库呀，端口呀，服务名称，消息队列…先只配置端口和名称，其他的我们用到再进行配置。</p>
+<p>在resources目录下，创建application.yml文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"></span><br><span class="line"> application:</span><br><span class="line"></span><br><span class="line">  name: sob-blog</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line"></span><br><span class="line"> port: 8080</span><br></pre></td></tr></table></figure>
+<p> 6.编写pom.xml文件</p>
+<p> 这个文件是自动生成的，需要加一些依赖，所需要的的如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.0.3.RELEASE&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;parent&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;net.sunofbeach&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;sob-blog-system-demo&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;packaging&gt;jar&lt;&#x2F;packaging&gt;</span><br><span class="line"></span><br><span class="line">    &lt;name&gt;sob-blog-system&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;url&gt;https:&#x2F;&#x2F;www.sunofbeach.net&lt;&#x2F;url&gt;</span><br><span class="line">    &lt;inceptionYear&gt;2020-Now&lt;&#x2F;inceptionYear&gt;</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt;</span><br><span class="line"></span><br><span class="line">        &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;&#x2F;project.reporting.outputEncoding&gt;</span><br><span class="line"></span><br><span class="line">        &lt;spring-cloud.version&gt;Finchley.RELEASE&lt;&#x2F;spring-cloud.version&gt;</span><br><span class="line">    &lt;&#x2F;properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencyManagement&gt;</span><br><span class="line">        &lt;dependencies&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-cloud-dependencies&lt;&#x2F;artifactId&gt;</span><br><span class="line">                &lt;version&gt;$&#123;spring-cloud.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">                &lt;type&gt;pom&lt;&#x2F;type&gt;</span><br><span class="line">                &lt;scope&gt;import&lt;&#x2F;scope&gt;</span><br><span class="line">            &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;&#x2F;dependencies&gt;</span><br><span class="line">    &lt;&#x2F;dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.commons&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;commons-pool2&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;finalName&gt;sob-blog-system-1.0.0&lt;&#x2F;finalName&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;mainClass&gt;net.sunofbeach.blog.BlogApplication&lt;&#x2F;mainClass&gt;</span><br><span class="line">                    &lt;includeSystemScope&gt;true&lt;&#x2F;includeSystemScope&gt;</span><br><span class="line">                &lt;&#x2F;configuration&gt;</span><br><span class="line">            &lt;&#x2F;plugin&gt;</span><br><span class="line">        &lt;&#x2F;plugins&gt;</span><br><span class="line">    &lt;&#x2F;build&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+<p>然后构建就完成了。</p>
+<p>2.连接数据库：</p>
+<p> \1. 之前我们在配置文件里配置了端口和名称，接下来配置一下数据库相关的内容</p>
+<p>配置在application.yml文件里的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 2020</span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: sob_blog_system</span><br><span class="line">  datasource:</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;192.168.190.129:3306&#x2F;sob_blog_system?characterEncoding&#x3D;utf-8&amp;useSSL&#x3D;false</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">    username: test_mysql_2</span><br><span class="line">    password: my-secret-pw</span><br></pre></td></tr></table></figure>
+<p>注意问题：</p>
+<p>1.信息不要填错</p>
+<p>2.如果是远程路径，或者是网络路径则填写网络路径</p>
+<p>3.要记得开放端口</p>
+<p>4.驱动不要错</p>
+<p>3.JavaBean：简单一句，封装数据。提供getter和setter。Pojo。创建了一个包，叫做pojopojo的原单词是Plain Ordinary Java Object 翻译过来大概是简单的java对象。JavaBean类与数据库字段对应，好在现在有逆向工程，或者我们的工具，可以直接帮助我们生成对应的java类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package net.sunofbeach.blog.pojo;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line"></span><br><span class="line">public class User implements Serializable &#123;</span><br><span class="line">    private String userName;</span><br><span class="line">    private int age;</span><br><span class="line">    private String gender;</span><br><span class="line"></span><br><span class="line">    public User(String userName, int age, String gender) &#123;</span><br><span class="line">        this.userName &#x3D; userName;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">        this.gender &#x3D; gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUserName() &#123;</span><br><span class="line">        return userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUserName(String userName) &#123;</span><br><span class="line">        this.userName &#x3D; userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getGender() &#123;</span><br><span class="line">        return gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setGender(String gender) &#123;</span><br><span class="line">        this.gender &#x3D; gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private House house;</span><br><span class="line"></span><br><span class="line">    public House getHouse() &#123;</span><br><span class="line">        return house;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setHouse(House house) &#123;</span><br><span class="line">        this.house &#x3D; house;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A56/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A56/" class="post-title-link" itemprop="url">DOM</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:17:48" itemprop="dateModified" datetime="2021-01-03T13:17:48+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>716</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践周报6"><a href="#创新实践周报6" class="headerlink" title="创新实践周报6"></a>创新实践周报6</h1><p>\1.   学习了Java的大部分类，以及接口，集合，泛型，异常处理等等。</p>
+<p>\2.   观看学习视频，这个up主是用虚拟机lunix环境下进行操作的，考虑到完整性（因为和这个视频的项目是比较完整的，可以看做参考）于是，就搭建了同样的环境</p>
+<p>\3.   前端的学习也在看：</p>
+<p><strong>DOM</strong>导航</p>
+<p><strong>1</strong>     DOM 处理中的一种常见错误是认为元素节点中包含文本。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p>访问 innerHTML 属性等同于访问首个子节点的 nodeValue</p>
+<p><strong>注释：</strong>nodeName 总是包含 HTML 元素的大写标签名。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p>4     <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p>5   <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<p><strong>6</strong>     <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg" alt="img">如需删除某个 HTML 元素，您需要知晓该元素的父：</p>
+<p>8     替换元素：<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg" alt="img"></p>
+<p><strong>DOM</strong>集合</p>
+<p><strong>1</strong>     <strong>getElementTagName</strong>（）返回 html<strong>的Collection</strong>对象，<strong>HTMLCollection</strong> 对象是类数组的 HTML 元素列表（集合）。</p>
+<p><strong>var x = document. getElementTagName(“p”)**</strong>选取所有<p><strong><strong>元素，通过索引访问x</strong></strong>中的对象：x[0]**</p>
+<p>2   length 属性定义了 HTMLCollection 中元素的数量</p>
+<p><strong>3</strong>   <strong>HTMLCollection</strong> <strong>并非数组！</strong></p>
+<p><strong>DOM</strong>节点列表</p>
+<p><strong>1</strong>     <strong><em>NodeList</em></strong> 对象是从文档中提取的节点列表（集合）。NodeList 对象与 HTMLCollection 对象几乎相同。</p>
+<p><strong>2</strong>     如使用 getElementsByClassName() 方法，某些（老的）浏览器会返回 NodeList 对象而不是 HTMLCollection。</p>
+<p><strong>3</strong>     所有浏览器都会为 childNodes 属性返回 NodeList 对象。</p>
+<p><strong>4</strong>     大多数浏览器会为 querySelectorAll() 方法返回 NodeList 对象。</p>
+<p>另外根据小组项目查阅了相关资料，再加上老师给的关于新苗的一些参看资料，小组进行了相关讨论，并深入了解项目</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A55/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A55/" class="post-title-link" itemprop="url">JSDOM</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:15:27" itemprop="dateModified" datetime="2021-01-03T13:15:27+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践周报5"><a href="#创新实践周报5" class="headerlink" title="创新实践周报5"></a>创新实践周报5</h1><p>$$<br>上完上次的课，我们小组对每个人的分工重新规划了一下，我被规划到后台开发，所以得重头开始，还要去学习Java，不过我学了c++在进行Java的学习应该不会很难，所以我的计划被打破了，这学期本着后台为主进行学习。<br>$$</p>
+<p>[TOC]</p>
+<h2 id="JSdom"><a href="#JSdom" class="headerlink" title="JSdom"></a>JSdom</h2><ol>
+<li><p><strong>document</strong>对象：</p>
+<p>1     查找html对象：**document.getElemementById（-ByTagName、-ByClassName）(NAME)**查找id、标签和类名。</p>
+<p>2     改变html方法：</p>
+<table>
+<thead>
+<tr>
+<th>element.innerHTML = new html content</th>
+<th>改变元素的inner HTML</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>element.attribute = new value</strong></td>
+<td><strong>改变HTML元素的属性值</strong></td>
+</tr>
+<tr>
+<td><strong>element.setAttribute(attribute, value)</strong></td>
+<td><strong>改变HTML元素的属性值</strong></td>
+</tr>
+<tr>
+<td><strong>element.style.property = new style</strong></td>
+<td><strong>改变HTML元素的样式</strong></td>
+</tr>
+<tr>
+<td>document.createElement(element)****</td>
+<td><strong>创建HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.removeChild(element)</strong></td>
+<td><strong>删除HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.appendChild(element)</strong></td>
+<td><strong>添加HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.replaceChild(element)</strong></td>
+<td><strong>替换 HTML元素&lt;</strong></td>
+</tr>
+<tr>
+<td><strong>document.write(text)</strong></td>
+<td><strong>写入HTML输出流</strong></td>
+</tr>
+</tbody></table>
+<p>2.添加事件处理程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById( id).onclick &#x3D; function()&#123;code&#125;   &#x2F;&#x2F;向onclick 事件添加事件处理程序</span><br></pre></td></tr></table></figure></li>
+<li><p>DOM元素：</p>
+<p>1     通过ID来查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var c &#x3D; document.getElementById(‘name’)</span><br></pre></td></tr></table></figure>
+<p>2      通过标签来查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var c &#x3D; document.getElementByTagName(&quot;p&quot;)         &#x2F;&#x2F;查找所有&lt;p&gt;中的元素然后储存在列表中。</span><br></pre></td></tr></table></figure>
+<p>3     通过类名查找</p>
+<p>4     通过CSS选择器查找html元素，如果您需要查找匹配指定 CSS 选择器（id、类名、类型、属性、属性值等等）的所有 HTML 元    素，请使用<strong>querySelectorAll（）</strong>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Var x &#x3D; document.querySelectorAll(“p.intor”)          &#x2F;&#x2F;返回class&#x3D; “intor”的所有&lt;p&gt;元素列表</span><br></pre></td></tr></table></figure>
+<p>5     DOM允许JS改变html元素内容：</p>
+<p>​      1     改变html输出流：<strong>document.write()**直接写入html输出流，千万不要在文档加载后使用</strong>document.write()**。这么做会覆盖文档。</p>
+<p>​      2     改变html元素内容：使用innerHTML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;p1&quot;&gt;Hello world ! &lt;&#x2F;p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById( &quot;p1&quot;).innerHTML &#x3D; &quot;hello kitty! &quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>​     3      改变属性的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img id&#x3D;&quot;my Image&quot; src&#x3D;&quot;smiley.gif&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById( &quot;myImage&quot; ).src &#x3D; &quot;landscape.jpg&quot; ;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>​            4      改变html样式：<strong>document.getElementById(id).style.property = new style</strong></p>
+</li>
+</ol>
+<p>3.动画</p>
+<p>​            1     创建动画容器：所有的动画都应该与容器元素相关</p>
+<p>​            2     为动画添加样式：通过<strong>style = “position:relative”</strong>与<strong>style = “position:absolute”</strong>创建容器元素</p>
+<p>​            3      动画代码：JavaScript动画是通过对元素样式进行渐进式变化编程完成的。这种变化通过一个计数器来调用。当计数器间隔很    小时，动画看上去就是连贯的。</p>
+<p>4.DOM事件</p>
+<p>1     当用户进入后及离开页面时，会触发 <strong>onload</strong>和 <strong>onunload</strong>事件。<strong>onload</strong>事件可用于检 测访问者的浏览器类型和浏览器版本，然后基于该信息加载网页的恰当版本。<strong>onload</strong> 和 <strong>onunload</strong>事件可用于处理 cookie</p>
+<p>2     <strong>onchange</strong>事件：<strong>onchange</strong>事件经常与输入字段验证结合使用。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p>3     <strong>onmouseover**</strong>与onmouseout****事件用于当用户将鼠标移至 HTML元素上或移出时触发某个函数<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>4     <strong>onmousedown</strong>和<strong>onmouseup</strong>以及onclick事件：首先当鼠标按钮被点击时，<strong>onmousedown</strong>事件被触发；然后当鼠标按钮被释放时，<strong>onmouseup</strong> 事件被触发；最后，当鼠标点击完成后，<strong>onclick</strong> 事件被触发<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p><strong>DOM</strong>事件监听器</p>
+<p>1    <strong>addEventListener()方法</strong>：为元素附加事件处理程序而不会覆盖已有的事件处理程序。您能够向一个元素添加多个事件处理程序。您能够向任何 DOM对象添加事件处理程序而非仅仅 HTML 元素，例如 window对象。<strong>addEventListener()**方法使我们更容易控制事件如何对冒泡作出反应。当使用 **addEventListener()**方法时，JavaScript 与 HTML 标记是分隔的，已达到更佳的可读性；即使在不控制 HTML标记时也允许您添加事件监听器。您能够通过使用 **removeEventListener()</strong> 方法轻松地删除事件监听器。</p>
+<p>语法：**element.addEventListener(event,function,useCapter)**第三个参数为布尔值，指定使用事件冒泡还是事件捕获。此参数是可选的。默认值是 false，将使用冒泡传播，如果该值设置为 true，则事件使用捕获传播。第一个参数为事件类型。</p>
+<p><strong>2</strong>    <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg" alt="img"></p>
+<p><strong>3</strong>    <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p><strong>4</strong>    创建html节点：</p>
+<p><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p><strong>5</strong>    创建html新元素：使用**insertBefore()**方法</p>
+<p><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<p>5     v-bind指令：vue中用于绑定属性，其中也可以写入正确的js表达式。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg" alt="img"></p>
+<p>也可以简写成:titlt = “*****”</p>
+<p>6     v-on指定为属性的绑定指令，缩写为@，v-on:事件=“”</p>
+<p>7     定时器：setInterval清除定时器：clearInterval</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A54/" class="post-title-link" itemprop="url">正则表达式与爬虫</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:33:09" itemprop="dateModified" datetime="2021-01-03T13:33:09+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践周报4"><a href="#创新实践周报4" class="headerlink" title="创新实践周报4"></a>创新实践周报4</h1><p>$$<br>本周工作计划</p>
+<ol>
+<li>   机械学习线性代数基础完成第二章</li>
+<li>   进一步学习js以及vue.js</li>
+<li>   进一步学习正则表达式以及爬虫知识</li>
+<li>   JS的表单对象和函数<br>$$</li>
+</ol>
+<hr>
+<p>[TOC]</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>1      一般字符： <strong>“.”</strong>，匹配任意的单个字符；<strong>“\”</strong>转义字符；<strong>“[…]”</strong>字符集，对应字符集的任意字符。</p>
+<p>2      预定义字符集：<strong>\d</strong>匹配一个数字字符\D匹配一个非零数字字符<strong>\s</strong>匹配任何空白字（空格 换行符 制表符换页符等）<strong>\S</strong>匹配任何非空字符<strong>\w</strong>匹配包括下划线的任意单词字符\W匹 配任何非单词字符。</p>
+<p>3      数量词：*<strong>**匹配前一个0或无限次+匹配前一个1或无限次</strong>？<strong>匹配前一个0或1次</strong>{m}<strong>匹配前一个m次</strong>{m,n}**匹配前一个m-n次</p>
+<p>4      边界匹配：<strong>＾</strong>匹配字符串的开头（＾abc匹配abc开头的字符串）**$<strong>匹配字符串结尾</strong>\A<strong>仅匹配字符串开头</strong>\Z**仅匹配字符串结尾</p>
+<p>5      非贪心算法：*<em>（.<em>？）</em></em>匹配任意字符，</p>
+<p>6      <strong>search()**函数：匹配并提取符合规律的内容返回的是正则表达式对象</strong>re.search(pattern,string,flage),**分别为要匹配的正则表达式，匹配的字符串，以及标志（是否换行，是否区分大小写等）</p>
+<p>7      <strong>sub()**函数用于替换字符串中的匹配项。</strong>re.sub(pattern,repl,string,count = 0,flage)repl<strong>是要替换的字符串，</strong>count**是模式匹配后替换的最大次数默认0表示替换所有的匹配。</p>
+<p>8      <strong>findall</strong>函数匹配所有符合规律的内容并且以列表的形式返回结果。</p>
+<p>9      <strong>re</strong>的模块修饰符：<strong>I</strong>使匹配对大小写不敏感，<strong>L</strong>做本地化识别<strong>M</strong>多行匹配影响**$<strong>和</strong>＾S<strong>匹配包括换行符在内的所有字符U根据Unicode解析字符</strong>X**该标志通过给予更加灵活的方式以便于将正则表达式更易理解</p>
+<p>10     **strip()**方法去除换行符</p>
+<p>11     在爬取斗破小说的时候用到了构造多页URL的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Urls &#x3D; [‘http.html’.format (str (i)) for i in range(n,m)]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Xpath以及xlml库"><a href="#Xpath以及xlml库" class="headerlink" title="Xpath以及xlml库"></a>Xpath以及xlml库</h2><p>1     Xpath节点选择：</p>
+<ul>
+<li><p>Nodename—选取此节点的所有子节点</p>
+</li>
+<li><p>/从根节点选取</p>
+</li>
+<li><p>//从匹配选择的当前节点选择文档中的节点，不考虑它的位置</p>
+</li>
+<li><p>.选取当前节点</p>
+</li>
+<li><p>..选取当前节点的父节点</p>
+</li>
+<li><p>@选取属性</p>
+</li>
+<li><p><strong>etree.HTML（）</strong>把<strong>html</strong>文本转化为<strong>HTML</strong>对象，要打印<strong>html</strong>内容，使用<strong>etree.tostring（）</strong></p>
+</li>
+<li><p>有时候遇到相同字符开头的标签，通过<strong>start-with()</strong>;遇到表嵌套标签的情况通过<strong>string(.)</strong><br>$$<br>这里本来是几张图的但是由于能力有限暂时不能显示，阿巴阿巴。。。<br>$$</p>
+</li>
+</ul>
+<h2 id="vue-js"><a href="#vue-js" class="headerlink" title="vue.js"></a>vue.js</h2><ol>
+<li><p>使用<strong>v-clock</strong>指令可以解决插值表达式的闪烁问题，添加属性<strong>v-clcok</strong>然后在<strong>head</strong>中创建一个样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style：[v-clock] : &#123;display : none;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>可以在标题标签中添加<strong>v-text</strong>属性，默认<strong>v-text</strong>属性没有闪烁问题，但是会覆盖元素中原本的内容，插值表达式只会替换自己的占位符不会把整个元素内容清空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p v-cloak&gt; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#123; &#123; mes &#125; &#125;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;h4 v-text&#x3D; &quot;mes &quot;&gt;-&#x3D;-&#x3D;-&#x3D;--&#x3D;-&lt;&#x2F;h4&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p><strong>v-html = “mes”</strong> 使得<strong>mes</strong>以<strong>mes</strong>当成<strong>html</strong>输出，也会覆盖元素内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;&#123; mes2 &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div v-html&#x3D;&quot;mes2&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A53/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A53/" class="post-title-link" itemprop="url">周报、JS</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:10:54" itemprop="dateModified" datetime="2021-01-03T13:10:54+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h1 id="创新实践周报3"><a href="#创新实践周报3" class="headerlink" title="创新实践周报3"></a>创新实践周报3</h1><p><strong><em>继续js的学习</em></strong></p>
+<hr>
+<p>[TOC]</p>
+<h2 id="JS数学"><a href="#JS数学" class="headerlink" title="JS数学"></a>JS数学</h2><p><strong>1</strong>     <strong>Math**</strong>允许对数字执行数学任务**</p>
+<p><strong>2</strong>     <strong>Math..round(x)**</strong>返回**<strong>x**</strong>四舍五入最近的整数**</p>
+<p><strong>3</strong>     <strong>Math.pow(x,y)**</strong>返回**<strong>x**</strong>的**<strong>y**</strong>次幂**</p>
+<p><strong>4</strong>     <strong>Math.sprt(x)**</strong>返回**<strong>x**</strong>的平方根**</p>
+<p><strong>5</strong>     <strong>Math.abs(x)**</strong>返回**<strong>x**</strong>的绝对值**</p>
+<p><strong>6</strong>     <strong>Math.ceil(x)**</strong>返回**<strong>x**</strong>的上舍入的整数，如：**<strong>Math.ceil(4.2)</strong> <strong>其实就是**</strong>5**</p>
+<p><strong>7</strong>     <strong>Math.floor(x)**</strong>返回**<strong>x**</strong>的下舍入的整数**</p>
+<p><strong>8</strong>     <strong>Math.sin(x)**</strong>以及**<strong>Math.cos(x)**</strong>返回**<strong>x**</strong>的正弦值，余弦值**</p>
+<p><strong>9</strong>     <strong>Math.max()**</strong>以及**<strong>Math.min()**</strong>返回列表的最大值以及最小值**</p>
+<p><strong>10</strong>   <strong>Math.random()**</strong>返回**<strong>0-1**</strong>之间的随机数（左闭右开）**</p>
+<p><strong>11</strong>   <strong>Math**</strong>属性（常量）：**</p>
+<p><strong>12</strong>   <strong>Math.E</strong>               //返回欧拉指数(Euler ‘s number)<br><strong>13</strong>   <strong>Math.SQRT2</strong>      //返回 2的平方根<br><strong>14</strong>   <strong>Math.SQRT1_2</strong>   //返回1/2的平方根 </p>
+<p><strong>15</strong>   <strong>Math.LN2</strong>              //返回 2的自然对数<br><strong>16</strong>   <strong>Math.LN10</strong>           //返回10的自然对数<br><strong>17</strong>   <strong>Math.LOG2E</strong>         //返回以2为底的e 的对数(约等于1.414)<br><strong>18</strong>   <strong>Math.LOG10E</strong>       //返回以10为底的e 的对数(约等于0.434)</p>
+<p><strong>19</strong>   与其他全局对象不一样<strong>math</strong>对象没有构造函数，方法和属性是静态的，可以在不首先创造对象的情况下使用方法和属性</p>
+<p><strong>20</strong>    <strong>log(x)</strong>                       //返回×的自然对数(底为e)</p>
+<p><strong>21</strong>    <strong>exp(x)</strong>                        //返回Ex的值</p>
+<h2 id="JS随机"><a href="#JS随机" class="headerlink" title="JS随机"></a>JS随机</h2><ol>
+<li><p><strong>Math.random()</strong> 总是返回小于 1 的数。</p>
+</li>
+<li><p><strong>Math.random()</strong> 与 <strong>Math.floor()</strong> 一起使用用于返回随机整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.random(Math.random()*10);</span><br></pre></td></tr></table></figure>
+<p>以此类推可以返回一定范围内的随机数</p>
+</li>
+<li><pre><code>Math.floor(Math.random() *(max - min) ) +min;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   返回min和 max之间的随机数（左闭右开)</span><br><span class="line"></span><br><span class="line">4. &#96;&#96;&#96;</span><br><span class="line">   Math.floor(Math.random() *(max - min + 1)) + min;</span><br></pre></td></tr></table></figure>
+返回min和l max 之间的随机数（闭区间)
+
+
+
+
+</code></pre>
+</li>
+</ol>
+<h2 id="JS逻辑"><a href="#JS逻辑" class="headerlink" title="JS逻辑"></a>JS逻辑</h2><ol>
+<li>**Boolean()**函数确定表达式或者或变量是否为真</li>
+<li><strong>Undefined</strong>、<strong>null、NaN</strong>的布尔值是 <strong>false</strong></li>
+<li>布尔可以是对象<strong>var x = new Boolean(\</strong>*)**</li>
+</ol>
+<h2 id="JS条件"><a href="#JS条件" class="headerlink" title="JS条件"></a>JS条件</h2><ol>
+<li>和<strong>c</strong>的语法几乎一样</li>
+<li><strong>default</strong> 关键词规定不存在 <strong>case</strong> 匹配时所运行的代码</li>
+</ol>
+<h2 id="JS循环"><a href="#JS循环" class="headerlink" title="JS循环"></a>JS循环</h2><ol>
+<li><strong>for/in</strong>循环遍历对象的属性</li>
+<li><strong>continue</strong> 语句（不论有无标签引用）只能用于**<em>跳过一个迭代**</em>。</li>
+<li><strong>break</strong> 语句，如果没有标签引用，只能用于*<strong>跳出一个循环或一个*** *</strong>switch*<strong>。如果有标签引用，则 break 语句可用于**<em>跳出任意代码块</em></strong></li>
+</ol>
+<h2 id="JS类型装换"><a href="#JS类型装换" class="headerlink" title="JS类型装换"></a>JS类型装换</h2><ol>
+<li><p>对象类型：数组，日期，对象</p>
+</li>
+<li><p><strong>NaN</strong>的数据类型是数值，<strong>null</strong>的数据类型是对象，未定义变量和未赋值的变量类型是<strong>undefined</strong></p>
+</li>
+<li><p><strong>typdef</strong>是运算符始终会返回字符串</p>
+</li>
+<li><p><strong>onstructor</strong>返回所有<strong>JS</strong>变量的构造器函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myArray.constructor.toString().indexOf(&quot;Array&quot;) &gt; -1;  检查，某个对象是否为数组（就是看看有没有Array单词）；myDate.constructor &#x3D;&#x3D;&#x3D; Date;                          是否为日期函数</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p><strong>Number()**将字符串转化为数值，</strong>“ ”<strong>，</strong>“ ，”<strong>为</strong>0<strong>，其他的是</strong>null**；也可以把布尔转化为数字</p>
+</li>
+<li><p>一元**+**运算符，可以把字符串转化为数值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; “5”;</span><br><span class="line">var x &#x3D; +y;</span><br></pre></td></tr></table></figure>
+<p> x是数字，如果无法转化变量，仍然会变成数字但是值是<strong>NaN</strong></p>
+</li>
+<li><p>日期转化为数字：<strong>Number()**和日期方法</strong>getTime()<strong>相同</strong></p>
+</li>
+</ol>
+<h2 id="JS正则表达式"><a href="#JS正则表达式" class="headerlink" title="JS正则表达式"></a>JS正则表达式</h2><ol>
+<li><p>**search()**表达式来搜索匹配，返回匹配的位置</p>
+<p><strong>1</strong>     可以接受字符串最为参数，他将被转换为正则表达式</p>
+<p><strong>2</strong>     **replace()**函数类似于此，但是它的功能是替换指定的字符串</p>
+</li>
+<li><p>正则表达式修饰符：<strong>i(**执行对大小写不敏感的操作</strong>),g<strong>（全局操作）</strong>,m**（执行多行匹配）</p>
+</li>
+<li><p>正则表达式模式：</p>
+<p><strong>1</strong>    <strong>[abc\</strong>*]**查找方括号内的任意字符</p>
+<p><strong>2</strong>    <strong>[0-9]**</strong>查找<strong>0-9</strong>的任意数字</p>
+<p><strong>3</strong>    <strong>(x|y)**</strong>查找由**|**分隔的任一项</p>
+<p><strong>4</strong>    **(red|blue|black)**查找任何指定的选项</p>
+<p><strong>5</strong>    <strong>[^abc\</strong>*]**查找不在方括号内的字符</p>
+</li>
+<li><p>元字符：</p>
+<p><strong>1</strong>     <strong>“.”</strong>匹配任意的单个字符，换行符除外与行结束符</p>
+<p><strong>2</strong>     <strong>\w**</strong>查找单词字符（<strong>\W</strong>查找非单词字符）</p>
+<p><strong>3</strong>     <strong>\d**</strong>查找数字字符（<strong>\D</strong>查找非数字字符）</p>
+<p><strong>4</strong>     <strong>\s**</strong>查找空白字符**(\S**查找非空白字符)</p>
+<p><strong>5</strong>     <strong>\b**</strong>匹配单词边界（<strong>\B</strong>匹配非单词边界）</p>
+<p><strong>6</strong>     <strong>\0**</strong>查找<strong>NULL</strong>字符</p>
+<p><strong>7</strong>     <strong>\n</strong>查找换行符</p>
+<p><strong>8</strong>     <strong>\xxx**</strong>、<strong>\xdd</strong>、<strong>\uxxxx</strong>匹配<strong>8</strong>、<strong>16</strong>、<strong>32</strong>进制的字符</p>
+</li>
+<li><p>量词：</p>
+<p><strong>1</strong>     <strong>n+**匹配包含至少有一个</strong>n**的字符串</p>
+<p><strong>2</strong>     <strong>\n</strong>匹配包含<strong>0</strong>个或者多<strong>n</strong>的字符串</p>
+<p><strong>3</strong>     <strong>n?</strong> 匹配包含<strong>0</strong>个或者<strong>1</strong>个<strong>n</strong>的字符串</p>
+<p><strong>4</strong>     <strong>n{x}**</strong>匹配包含<strong>x**</strong>个<strong>n</strong>的序列的字符串</p>
+<p><strong>5</strong>     <strong>n{x,y}**</strong>匹配包含<strong>x</strong>个至<strong>y</strong>个<strong>n</strong>的序列的字符串</p>
+<p><strong>6</strong>     <strong>n{x,}**</strong>匹配至少包含<strong>x</strong>个<strong>n</strong>的序列的字符串</p>
+<p><strong>7</strong>     <strong>n$**</strong>匹配以<strong>n</strong>结尾的字符串</p>
+<p><strong>8</strong>     <strong>^n**</strong>匹配以<strong>n</strong>开头的字符串</p>
+<p><strong>9</strong>     <strong>?=n</strong>匹配任何其后紧接指定字符串 n 的字符串。</p>
+<p><strong>10</strong>   <strong>?!n</strong>匹配任何其后没有紧接指定字符串 n 的字符串。</p>
+</li>
+<li><p>在 <strong>JavaScript</strong> 中，<strong>RegExp</strong> 对象是带有预定义属性和方法的正则表达式对象</p>
+<p><strong>1</strong>     <strong>compile</strong>编译正则表达式</p>
+<p><strong>2</strong>     <strong>test()**检索字符值，返回</strong>true<strong>或者</strong>false**</p>
+<p><strong>3</strong>     **exec()**检索字符值，，返回指定的值并确定位置</p>
+</li>
+<li><p><strong>math()**找到一个或者多个正则表达式的匹配，找不到返回</strong>null**</p>
+</li>
+</ol>
+<h2 id="JS异常"><a href="#JS异常" class="headerlink" title="JS异常"></a>JS异常</h2><ol>
+<li><strong>finally</strong> 使您能够执行代码，在 <strong>try</strong> 和 <strong>catch</strong> 之后，无论结果如何</li>
+<li><strong>JavaScript</strong> 实际上会创建带有两个属性的 <strong><em>Error</em></strong> <strong><em>对象</em></strong>：<strong>name</strong> 和 <strong>message</strong>分别设置并返回错误名或者设置并返回错误消息</li>
+<li><strong>val()</strong> 函数可将字符串转换为代码执行，并返回一个或多个值</li>
+<li><strong>encodeURI()**函数作用：可把字符串作为 **URI</strong> 进行编码。参数：必需。一个字符串，含有 URI 或其他要编码的文本。</li>
+</ol>
+<h2 id="JS变量范围"><a href="#JS变量范围" class="headerlink" title="JS变量范围"></a>JS变量范围</h2><ol>
+<li>如果您为尚未声明的变量赋值，此变量会自动生成并成为全局变量。</li>
+<li>通过 <strong>JavaScript</strong>，全局作用域形成了完整的 <strong>JavaScript</strong> 环境。在 <strong>HTML</strong> 中，全局作用域是 <strong>window</strong>。所有全局变量均属于 window 对象。</li>
+<li>除非有意为之，否则请勿创建全局变量。您的全局变量（或函数）能够覆盖 <strong>window</strong> 变量（或函数）。任何函数，包括 <strong>window</strong> 对象，能够覆盖您的全局变量和函数。</li>
+</ol>
+<h2 id="JS提升"><a href="#JS提升" class="headerlink" title="JS提升"></a>JS提升</h2><p><strong>1</strong>     提升（<strong>Hoisting</strong>）是 J<strong>avaScript</strong> 将声明移至顶部的默认行为。</p>
+<p><strong>2</strong>     在 <strong>JavaScript</strong> 中，可以在使用变量之后对其进行声明。</p>
+<p><strong>3</strong>     用<strong>let</strong>和<strong>const</strong>声明的变量和关键字不能提升</p>
+<p><strong>4</strong>     初始化不能被提升</p>
+<h2 id="vue-js"><a href="#vue-js" class="headerlink" title="vue.js"></a>vue.js</h2><ol>
+<li><p>引入vue：</p>
+<p>1     直接下载并用 <code>&lt;script&gt;</code> 标签引入，<code>Vue</code> 会被注册为一个全局变量。</p>
+<p>2     CDN引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>3     声明式渲染：视图和脚本</p>
+<p>视图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id &#x3D; “app”&gt; &#123;&#123;message&#125; &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>脚本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var app &#x3D; new Vue(&#123;</span><br><span class="line">                 el : ‘#app’,</span><br><span class="line">                 data:&#123;</span><br><span class="line">                    message:’HELLO VUE!’ </span><br><span class="line">                 &#125; </span><br><span class="line">&#125;)；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>​    2     一个 <strong>Vue</strong> 应用会将<strong>HTML</strong>挂载到一个 <strong>DOM</strong> 元素上 (对于这个例子是 <code>#app</code>) 然后对其进行完全控制。那个 <strong>HTML</strong> 是我们的入口，但  其余都会发生在新创建的 <strong>Vue</strong> 实例内部。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A52/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="c">
+      <meta itemprop="description" content="nothing is possible">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="H-I-C">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/03/%E5%91%A8%E6%8A%A52/" class="post-title-link" itemprop="url">JS</a>
+        </h2>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:07:13" itemprop="dateModified" datetime="2021-01-03T13:07:13+08:00">2021-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>js—javascript</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/03/%E5%91%A8%E6%8A%A52/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/02/%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A51/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -499,12 +1392,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">20k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
 </div>
 
         

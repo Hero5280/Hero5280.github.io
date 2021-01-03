@@ -24,20 +24,32 @@
     var CONFIG = {"hostname":"hero.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="nothing is possible">
+  <meta name="description" content="创新实践周报5$$上完上次的课，我们小组对每个人的分工重新规划了一下，我被规划到后台开发，所以得重头开始，还要去学习Java，不过我学了c++在进行Java的学习应该不会很难，所以我的计划被打破了，这学期本着后台为主进行学习。$$ [TOC] JSdom document对象： 1     查找html对象：**document.getElemementById（-ByTagName、-ByCl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blog">
-<meta property="og:url" content="http://hero.github.io/2021/01/02/blog/index.html">
+<meta property="og:title" content="JSDOM">
+<meta property="og:url" content="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A55/index.html">
 <meta property="og:site_name" content="H-I-C">
-<meta property="og:description" content="nothing is possible">
+<meta property="og:description" content="创新实践周报5$$上完上次的课，我们小组对每个人的分工重新规划了一下，我被规划到后台开发，所以得重头开始，还要去学习Java，不过我学了c++在进行Java的学习应该不会很难，所以我的计划被打破了，这学期本着后台为主进行学习。$$ [TOC] JSdom document对象： 1     查找html对象：**document.getElemementById（-ByTagName、-ByCl">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-02T03:49:17.000Z">
-<meta property="article:modified_time" content="2021-01-02T03:49:17.034Z">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg">
+<meta property="og:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg">
+<meta property="article:published_time" content="2021-01-03T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-03T05:15:27.172Z">
 <meta property="article:author" content="c">
-<meta property="article:tag" content="draft">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="事件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg">
 
-<link rel="canonical" href="http://hero.github.io/2021/01/02/blog/">
+<link rel="canonical" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A55/">
 
 
 <script id="page-configurations">
@@ -50,7 +62,7 @@
   };
 </script>
 
-  <title>blog | H-I-C</title>
+  <title>JSDOM | H-I-C</title>
   
 
 
@@ -191,7 +203,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/02/blog/">
+    <link itemprop="mainEntityOfPage" href="http://hero.github.io/2021/01/03/%E5%91%A8%E6%8A%A55/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -204,10 +216,17 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          blog
+          JSDOM
         </h1>
 
         <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-03 13:15:27" itemprop="dateModified" datetime="2021-01-03T13:15:27+08:00">2021-01-03</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -222,14 +241,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -241,7 +260,95 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <a id="more"></a>
+<h1 id="创新实践周报5"><a href="#创新实践周报5" class="headerlink" title="创新实践周报5"></a>创新实践周报5</h1><p>$$<br>上完上次的课，我们小组对每个人的分工重新规划了一下，我被规划到后台开发，所以得重头开始，还要去学习Java，不过我学了c++在进行Java的学习应该不会很难，所以我的计划被打破了，这学期本着后台为主进行学习。<br>$$</p>
+<p>[TOC]</p>
+<h2 id="JSdom"><a href="#JSdom" class="headerlink" title="JSdom"></a>JSdom</h2><ol>
+<li><p><strong>document</strong>对象：</p>
+<p>1     查找html对象：**document.getElemementById（-ByTagName、-ByClassName）(NAME)**查找id、标签和类名。</p>
+<p>2     改变html方法：</p>
+<table>
+<thead>
+<tr>
+<th>element.innerHTML = new html content</th>
+<th>改变元素的inner HTML</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>element.attribute = new value</strong></td>
+<td><strong>改变HTML元素的属性值</strong></td>
+</tr>
+<tr>
+<td><strong>element.setAttribute(attribute, value)</strong></td>
+<td><strong>改变HTML元素的属性值</strong></td>
+</tr>
+<tr>
+<td><strong>element.style.property = new style</strong></td>
+<td><strong>改变HTML元素的样式</strong></td>
+</tr>
+<tr>
+<td>document.createElement(element)****</td>
+<td><strong>创建HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.removeChild(element)</strong></td>
+<td><strong>删除HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.appendChild(element)</strong></td>
+<td><strong>添加HTML元素</strong></td>
+</tr>
+<tr>
+<td><strong>document.replaceChild(element)</strong></td>
+<td><strong>替换 HTML元素&lt;</strong></td>
+</tr>
+<tr>
+<td><strong>document.write(text)</strong></td>
+<td><strong>写入HTML输出流</strong></td>
+</tr>
+</tbody></table>
+<p>2.添加事件处理程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById( id).onclick &#x3D; function()&#123;code&#125;   &#x2F;&#x2F;向onclick 事件添加事件处理程序</span><br></pre></td></tr></table></figure></li>
+<li><p>DOM元素：</p>
+<p>1     通过ID来查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var c &#x3D; document.getElementById(‘name’)</span><br></pre></td></tr></table></figure>
+<p>2      通过标签来查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var c &#x3D; document.getElementByTagName(&quot;p&quot;)         &#x2F;&#x2F;查找所有&lt;p&gt;中的元素然后储存在列表中。</span><br></pre></td></tr></table></figure>
+<p>3     通过类名查找</p>
+<p>4     通过CSS选择器查找html元素，如果您需要查找匹配指定 CSS 选择器（id、类名、类型、属性、属性值等等）的所有 HTML 元    素，请使用<strong>querySelectorAll（）</strong>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Var x &#x3D; document.querySelectorAll(“p.intor”)          &#x2F;&#x2F;返回class&#x3D; “intor”的所有&lt;p&gt;元素列表</span><br></pre></td></tr></table></figure>
+<p>5     DOM允许JS改变html元素内容：</p>
+<p>​      1     改变html输出流：<strong>document.write()**直接写入html输出流，千万不要在文档加载后使用</strong>document.write()**。这么做会覆盖文档。</p>
+<p>​      2     改变html元素内容：使用innerHTML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;p1&quot;&gt;Hello world ! &lt;&#x2F;p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById( &quot;p1&quot;).innerHTML &#x3D; &quot;hello kitty! &quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>​     3      改变属性的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img id&#x3D;&quot;my Image&quot; src&#x3D;&quot;smiley.gif&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById( &quot;myImage&quot; ).src &#x3D; &quot;landscape.jpg&quot; ;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>​            4      改变html样式：<strong>document.getElementById(id).style.property = new style</strong></p>
+</li>
+</ol>
+<p>3.动画</p>
+<p>​            1     创建动画容器：所有的动画都应该与容器元素相关</p>
+<p>​            2     为动画添加样式：通过<strong>style = “position:relative”</strong>与<strong>style = “position:absolute”</strong>创建容器元素</p>
+<p>​            3      动画代码：JavaScript动画是通过对元素样式进行渐进式变化编程完成的。这种变化通过一个计数器来调用。当计数器间隔很    小时，动画看上去就是连贯的。</p>
+<p>4.DOM事件</p>
+<p>1     当用户进入后及离开页面时，会触发 <strong>onload</strong>和 <strong>onunload</strong>事件。<strong>onload</strong>事件可用于检 测访问者的浏览器类型和浏览器版本，然后基于该信息加载网页的恰当版本。<strong>onload</strong> 和 <strong>onunload</strong>事件可用于处理 cookie</p>
+<p>2     <strong>onchange</strong>事件：<strong>onchange</strong>事件经常与输入字段验证结合使用。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p>3     <strong>onmouseover**</strong>与onmouseout****事件用于当用户将鼠标移至 HTML元素上或移出时触发某个函数<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>4     <strong>onmousedown</strong>和<strong>onmouseup</strong>以及onclick事件：首先当鼠标按钮被点击时，<strong>onmousedown</strong>事件被触发；然后当鼠标按钮被释放时，<strong>onmouseup</strong> 事件被触发；最后，当鼠标点击完成后，<strong>onclick</strong> 事件被触发<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p><strong>DOM</strong>事件监听器</p>
+<p>1    <strong>addEventListener()方法</strong>：为元素附加事件处理程序而不会覆盖已有的事件处理程序。您能够向一个元素添加多个事件处理程序。您能够向任何 DOM对象添加事件处理程序而非仅仅 HTML 元素，例如 window对象。<strong>addEventListener()**方法使我们更容易控制事件如何对冒泡作出反应。当使用 **addEventListener()**方法时，JavaScript 与 HTML 标记是分隔的，已达到更佳的可读性；即使在不控制 HTML标记时也允许您添加事件监听器。您能够通过使用 **removeEventListener()</strong> 方法轻松地删除事件监听器。</p>
+<p>语法：**element.addEventListener(event,function,useCapter)**第三个参数为布尔值，指定使用事件冒泡还是事件捕获。此参数是可选的。默认值是 false，将使用冒泡传播，如果该值设置为 true，则事件使用捕获传播。第一个参数为事件类型。</p>
+<p><strong>2</strong>    <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg" alt="img"></p>
+<p><strong>3</strong>    <img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p><strong>4</strong>    创建html节点：</p>
+<p><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p><strong>5</strong>    创建html新元素：使用**insertBefore()**方法</p>
+<p><img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<p>5     v-bind指令：vue中用于绑定属性，其中也可以写入正确的js表达式。<img src="file:///C:/Users/86178/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg" alt="img"></p>
+<p>也可以简写成:titlt = “*****”</p>
+<p>6     v-on指定为属性的绑定指令，缩写为@，v-on:事件=“”</p>
+<p>7     定时器：setInterval清除定时器：clearInterval</p>
+
     </div>
 
     
@@ -251,7 +358,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/draft/" rel="tag"><i class="fa fa-tag"></i> draft</a>
+              <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 事件</a>
           </div>
 
         
@@ -260,12 +369,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/02/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A54/" rel="prev" title="正则表达式与爬虫">
+      <i class="fa fa-chevron-left"></i> 正则表达式与爬虫
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/01/02/%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A51/" rel="next" title="创新实践周报1">
-      创新实践周报1 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/01/03/%E5%91%A8%E6%8A%A56/" rel="next" title="DOM">
+      DOM <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -325,6 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E5%91%A8%E6%8A%A55"><span class="nav-number">1.</span> <span class="nav-text">创新实践周报5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSdom"><span class="nav-number">1.1.</span> <span class="nav-text">JSdom</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
