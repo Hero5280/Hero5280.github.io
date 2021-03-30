@@ -9,6 +9,84 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/2021/03/30/cxsj22/</url>
+    <content><![CDATA[<h1 id="第二学期周报1"><a href="#第二学期周报1" class="headerlink" title="第二学期周报1"></a>第二学期周报1</h1><hr>
+<p>[TOC]</p>
+<h2 id="1、总结一下数据库连接常见问题"><a href="#1、总结一下数据库连接常见问题" class="headerlink" title="1、总结一下数据库连接常见问题"></a>1、总结一下数据库连接常见问题</h2><p>关于这个问题，确实有点弱智。。。明明很简单的，好吧还是总结一下吧。</p>
+<p>我平时用的数据库是在<em>Linux</em>虚拟机上装的，上学期学习过程中我把虚拟机装在<em>docker</em>里面了，所以呢，呵呵，一般的解决方法是解决不了的，关于这个东西我在网上查看一下，基本找不到，所以我放弃了。</p>
+<p> 本机的虚拟机呢密码忘记了，我也不想整了，后面会给出解决方法。我重新装了一个windows的虚拟机。</p>
+<p>   1进入MySQL官网：<a href="https://dev.mysql.com/downloads%E8%BF%99%E9%87%8C%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9%E7%A4%BE%E5%8C%BA%E7%89%88%EF%BC%8C%E8%BF%99%E9%87%8C%E5%B7%B2%E7%BB%8F%E6%8F%90%E7%A4%BA%E5%AE%89%E8%A3%85%E5%8C%85%E6%98%AF32%E4%BD%8D%E7%9A%84%EF%BC%8C%E4%BD%86%E6%98%AF%E5%B0%86%E5%AE%89%E8%A3%8532%E4%BD%8D%E5%92%8C64%E4%BD%8D%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E6%88%91%E4%BB%AC%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E5%B0%B1%E5%A5%BD%E3%80%82">https://dev.mysql.com/downloads这里我们选择社区版，这里已经提示安装包是32位的，但是将安装32位和64位的，所以我们直接下载其中一个就好。</a></p>
+<p>  2然后把刚才下载的打开安装</p>
+<p>  3安装类型选择Custom-&gt;然后选择mysql sever的版本以及mysql workb的版本随后直接next-&gt;直接Execute-&gt;  然后一直next不用管一直 到出现让你输入你得密码为止-&gt;好吧，一定记住密码（别问为什么很**的一个问题），这个界面你一定要再创建一个新的用户，自己定义  用户名和密码，host为%这样你就不用为了以后出现权限问题而烦恼了！！！（好吧 如果忘了那也没办法后面再说），下一步next-&gt;设置服务名称随便-&gt;然后一直next就好了。</p>
+<p>4配置环境变量：右击我的电脑–&gt;属性–&gt;高级系统设置–&gt;高级–&gt;环境变量，在打开的窗口中选择 “系统变量” 下的 “新建” 按钮创建环境变量。</p>
+<p>（1）变量名：MYSQL_HOME</p>
+<p>（2）变量值：C:\Program Files\MySQL\MySQL Server 8.0（MySQL的安装目录）</p>
+<p>配置 path 环境变量</p>
+<p>在系统变量中，选择path并单击编辑按钮，然后点击新建，输入：%MYSQL_HOME%\bin，然后一路确定回去。（如果点击“编辑”之后所有变量在一个输入文本框，注意变量值之间用”;”隔开。注意原来Path的变量值末尾有没有;号，如果没有，先输入;号再输入）</p>
+<p>（1）变量名：path</p>
+<p>（2）变量值：%MYSQL_HOME%\bin 或 C:\Program Files\MySQL\MySQL Server 8.0\bin （MySQL的安装目录里的bin目录）</p>
+<p> 5在命令提示符下启动、停止MySQL服务器。这里可能会遇到 “发生系统错误5 拒绝访问” 的错误，这是因为操作的权限不足，需要以管理员身份运行。或者使用安装好的workbench。</p>
+<h3 id="连接错误的解决"><a href="#连接错误的解决" class="headerlink" title="连接错误的解决"></a>连接错误的解决</h3><p>1、1045 Access denied for user ‘root’@’localhost’ (using password:YES)是的这是一个错误代码，也是本人很头疼的问题，由于我的数据库安装在docker里面所以我试了很多的方法都不行。但是确实一个很简单的问题，（如果你在安装时创建了一个用户上面说过你就不会出现这个问题，如果出现了。。。那好吧）解决方法如下：</p>
+<p>1.找到MySQL安装路径下的my.ini文件，用记事本的方式打开；</p>
+<p>2.打开后，找到[mysqld]这个位置；</p>
+<p>3.在 [mysqld] 底下添加语句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure>
+<p>添加完毕后保存。如果提示不让修改这个文件，则可将它复制到桌面，再用记事本打开它，添加完毕后，将桌面上的文件复制到原来的地方，赋值时选择替换目标文件；（skip-grant-tables作为启动参数的作用：MYSQL服务器不加载权限判断，任何用户都能访问数据库。</p>
+<p>也就是说，启用这个参数之后，数据库的安全性会降低。</p>
+<p>）</p>
+<p>4 然后修改你自己的数据库密码再刷新一遍就好了</p>
+<p>还有一个解决方法是这个：</p>
+<p>1.首先再服务器的mysql打开cmd输入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>接下来会提示输入密码</p>
+<p>2.进入成功以后找到表user:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+<p>提示database changed表示成功</p>
+<p>3.修改表里的参数，也就是权限修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON . TO ‘root’@’%’ IDENTIFIED BY ‘’ WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
+<p>(这个==%==号就是代表任意IP都可以进行数据库的访问)</p>
+<p>4.在进入这句话完了以后需要再加上一句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>(告诉mysql进行权限刷新)</p>
+<p>5.退出mysql的连接</p>
+<p>\q</p>
+<p>好了，到了这一步，权限就已经修改，再次远程连接mysql，就可以了。</p>
+<h2 id="2、有关JAVA的学习"><a href="#2、有关JAVA的学习" class="headerlink" title="2、有关JAVA的学习"></a>2、有关JAVA的学习</h2><p>学习模块没啥可说的，这个月基本会完成有关基础的学习，以后就是巩固和拓展了，害，基础差，代码都看不懂，人家的代码不想拿来直接用只改参数，那就自己重构。这叫啥没有创新点。学到了面相对象那里，后面就比较重要了。</p>
+<h2 id="3、有关聊天室"><a href="#3、有关聊天室" class="headerlink" title="3、有关聊天室"></a>3、有关聊天室</h2><p>聊天室的构成可以说是各种各样，目前打算是java写，肯定是不止于Java的，查看了资料，很多都应用了Socket，所以这个礼拜就学习了解了Socket。</p>
+<p>对TCP/IP、UDP、Socket编程这些词，是有点蒙。。。害 菜啊</p>
+<h3 id="什么是TCP-IP、UDP？Socket是什么呢？"><a href="#什么是TCP-IP、UDP？Socket是什么呢？" class="headerlink" title="什么是TCP/IP、UDP？Socket是什么呢？"></a>什么是TCP/IP、UDP？Socket是什么呢？</h3><p>TCP/IP（Transmission Control Protocol/Internet Protocol）即传输控制协议/网间协议，是一个工业标准的协议集，它是为广域网（WANs）设计的。<br> UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是属于TCP/IP协议族中的一种。TCP/IP协议族包括运输层、网络层、链路层。</p>
+<p>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。</p>
+<p>先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束。</p>
+<h3 id="学了一部分的Socket的基本操作，下周看完。"><a href="#学了一部分的Socket的基本操作，下周看完。" class="headerlink" title="学了一部分的Socket的基本操作，下周看完。"></a>学了一部分的Socket的基本操作，下周看完。</h3><p>本地的进程间通信（IPC）有很多种方式，但可以总结为下面4类：</p>
+<ul>
+<li>消息传递（管道、FIFO、消息队列）</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
+<li>共享内存（匿名的和具名的）</li>
+<li>远程过程调用（Solaris门和Sun RPC）</li>
+</ul>
+<p>网络中进程之间的通信，首要解决的问题是如何唯一标识一个进程，否则通信无从谈起。在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“<strong>ip**</strong>地址<strong>”可以唯一标识网络中的主机，而传输层的“</strong>协议**<strong>+**</strong>端口**”可以唯一标识主机中的应用程序（进程）。这样利用三元组（ip地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。</p>
+<p>使用TCP/IP协议的应用程序通常采用应用编程接口：UNIX BSD的套接字（socket）和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用socket。</p>
+<p>socket是“open—write/read—close”模式的一种实现，那么socket提供了一些操作对应的函数接口。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int **socket**(int domain, int type, int protocol);</span><br></pre></td></tr></table></figure>
+<p> socket函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而socket()用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。</p>
+<p>正如可以给fopen的传入不同参数值，以打开不同的文件。创建socket的时候，也可以指定不同的参数创建不同的socket描述符，socket函数的三个参数分别为：</p>
+<p>·    domain：即协议域，又称为协议族（family）。常用的协议族有，AF_INET、AF_INET6、AF_LOCAL（或称AF_UNIX，Unix域socket）、AF_ROUTE等等。协议族决定了socket的地址类型，在通信中必须采用对应的地址，如AF_INET决定了要用ipv4地址（32位的）与端口号（16位的）的组合、AF_UNIX决定了要用一个绝对路径名作为地址。</p>
+<p>·    type：指定socket类型。常用的socket类型有，SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET等等。</p>
+<p>·    protocol：故名思意，就是指定协议。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC等，它们分别对应TCP传输协议、UDP传输协议、STCP传输协议、TIPC传输协议（额这些协议还得学！！！）注意：并不是上面的type和protocol可以随意组合的，如SOCK_STREAM不可以跟IPPROTO_UDP组合。当protocol为0时，会自动选择type类型对应的默认协议。</p>
+<p>当我们调用socket创建一个socket时，返回的socket描述字它存在于协议族（address family，AF_XXX）空间中，但没有一个具体的地址。如果想要给它赋值一个地址，就必须调用bind()函数，否则就当调用connect()、listen()时系统会自动随机分配一个端口。</p>
+<p>bind()函数把一个地址族中的特定地址赋给socket。例如对应AF_INET、AF_INET6就是把一个ipv4或ipv6地址和端口号组合赋给socket。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</span><br></pre></td></tr></table></figure>
+<p>函数的三个参数分别为：</p>
+<p>·    sockfd：即socket描述字，它是通过socket()函数创建了，唯一标识一个socket。bind()函数就是将给这个描述字绑定一个名字。</p>
+<p>·    addr：一个const struct sockaddr *指针，指向要绑定给sockfd的协议地址。这个地址结构根据地址创建socket时的地址协议族的不同而不同。</p>
+<p>·    addrlen：对应的是地址的长度。</p>
+<p>通常服务器在启动的时候都会绑定一个众所周知的地址（如ip地址+端口号），用于提供服务，客户就可以通过它来接连服务器；而客户端就不用指定，有系统自动分配一个端口号和自身的ip地址组合。</p>
+<p>就看了这两个函数，下周继续。</p>
+<hr>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/01/02/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
